@@ -973,7 +973,7 @@
         });
 
         if (!response.ok) {
-          throw new Error(`Gagal mengirim data (HTTP ${response.status})`);
+          throw new Error(`Gagal menghubungi server Google Apps Script (HTTP ${response.status})`);
         }
 
         const data = await response.json();
@@ -982,23 +982,12 @@
           setSubmitting(false);
           showConfirmationView(data.booking);
         } else {
-          throw new Error(data.message || 'Pemesanan jadwal tidak berhasil. Silakan coba kembali.');
+          throw new Error(data.message || 'Pemesanan jadwal ditolak oleh server.');
         }
       } catch (err) {
         console.error('Error saat submit:', err);
         setSubmitting(false);
-
-        // Fallback pendaftaran offline jika endpoint Apps Script sedang diperbarui
-        const fallbackBookingId = 'SN-' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
-        showConfirmationView({
-          id: fallbackBookingId,
-          nama: payload.nama,
-          whatsapp: payload.whatsapp,
-          hari: payload.hari,
-          jam: payload.jam,
-          ustadz: payload.ustadz,
-          materi: payload.materi
-        });
+        showAlert('Gagal menyimpan ke Google Sheets: ' + err.message);
       }
     }
 
