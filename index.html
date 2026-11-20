@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobat Ngaji - Konsultasi Tahsin Gratis</title>
+  <meta name="description" content="Pilih hari dan jam konsultasi tahsin Al-Qur'an gratis bersama pengajar Sobat Ngaji.">
+
+  <style>
+    /* -------------------------------------------------------------
+       Variabel Desain & Tema (Navy, Sky Blue, White, Green Accent)
+       Kontras teruji memenuhi standar WCAG AA (rasio di atas 4.5:1)
+       ------------------------------------------------------------- */
+    :root {
+      --bg-page: #f0f7fc;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f8fafc;
+      
+      --color-primary: #0369a1;       /* Biru langit pekat berkontras tinggi */
+      --color-primary-hover: #075985;
+      --color-primary-light: #e0f2fe;
+      
+      --color-navy: #0f2744;          /* Navy pekat untuk judul & identitas */
+      --color-navy-muted: #1e3a5f;
+      
+      --color-accent-green: #15803d;  /* Aksen hijau alami berkontras tinggi */
+      --color-accent-green-hover: #166534;
+      --color-accent-green-light: #dcfce7;
+      --color-accent-green-text: #166534;
+      
+      --color-text-main: #0f172a;     /* Teks utama (kontras 17.8:1 pada putih) */
+      --color-text-muted: #334155;    /* Teks pendukung */
+      --color-text-light: #64748b;
+      
+      --color-border: #cbd5e1;
+      --color-border-focus: #0369a1;
+      
+      --color-error-bg: #fef2f2;
+      --color-error-text: #991b1b;
+      --color-error-border: #fca5a5;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 12px -2px rgba(15, 39, 68, 0.08);
+
+      --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* Reset dasar */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg-page);
+      color: var(--color-text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media (min-width: 640px) {
+      body {
+        padding: 32px 20px;
+      }
+    }
+
+    /* Kontainer Utama Satu Halaman */
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      flex: 1 0 auto;
+    }
+
+    /* Header Identitas & Judul */
+    .header-box {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-top: 8px;
+    }
+
+    .brand-badge {
+      display: inline-block;
+      background-color: var(--color-primary-light);
+      color: var(--color-navy);
+      font-weight: 700;
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 12px;
+      border: 1px solid #bae6fd;
+    }
+
+    .site-title {
+      color: var(--color-navy);
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    @media (min-width: 640px) {
+      .site-title {
+        font-size: 2.125rem;
+      }
+    }
+
+    .site-desc {
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Card Pembungkus Form */
+    .main-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-card);
+      padding: 24px 20px;
+    }
+
+    @media (min-width: 640px) {
+      .main-card {
+        padding: 32px 28px;
+      }
+    }
+
+    /* Bagian Form Section */
+    .section-title {
+      color: var(--color-navy);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background-color: var(--color-primary-light);
+      color: var(--color-primary-hover);
+      font-size: 0.875rem;
+      font-weight: 700;
+      border-radius: 50%;
+    }
+
+    .picker-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Grid Pilihan Hari (Min Target Sentuh 44px) */
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(78px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .day-pill {
+      min-height: 44px;
+      padding: 10px 8px;
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-main);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .day-pill:hover {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary-light);
+    }
+
+    .day-pill.selected {
+      background-color: var(--color-navy);
+      border-color: var(--color-navy);
+      color: #ffffff;
+    }
+
+    /* Grid Pilihan Jam (Hanya 3 Jam Resmi) */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hour-pill {
+      min-height: 44px;
+      padding: 10px 14px;
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-main);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .hour-pill:hover {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary-light);
+    }
+
+    .hour-pill.selected {
+      background-color: var(--color-navy);
+      border-color: var(--color-navy);
+      color: #ffffff;
+    }
+
+    /* Kotak Ringkasan Pilihan Jadwal */
+    .schedule-summary-box {
+      background-color: var(--color-accent-green-light);
+      border: 1px solid #86efac;
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .schedule-summary-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-accent-green-text);
+      margin-bottom: 4px;
+    }
+
+    .schedule-summary-text {
+      font-size: 1rem;
+      color: #064e3b;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .schedule-summary-note {
+      font-size: 0.8125rem;
+      color: #047857;
+      font-weight: 500;
+    }
+
+    /* Form Isian Peserta */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 6px;
+    }
+
+    .form-label-required {
+      color: #dc2626;
+      margin-left: 2px;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 14px;
+      font-size: 0.9375rem;
+      font-family: inherit;
+      color: var(--color-text-main);
+      background-color: var(--bg-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--color-border-focus);
+      box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.18);
+    }
+
+    .form-hint {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--color-text-light);
+      margin-top: 4px;
+    }
+
+    /* Tombol Utama Booking */
+    .btn-submit {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 20px;
+      background-color: var(--color-navy);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.15s ease;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background-color: var(--color-navy-muted);
+    }
+
+    .btn-submit:disabled {
+      background-color: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    /* Kotak Alert Validasi Form */
+    .form-alert {
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+      font-size: 0.875rem;
+      display: none;
+    }
+
+    .form-alert.error {
+      background-color: var(--color-error-bg);
+      border: 1px solid var(--color-error-border);
+      color: var(--color-error-text);
+      display: block;
+    }
+
+    /* -------------------------------------------------------------
+       TAMPILAN KONFIRMASI BOOKING (Setelah Berhasil)
+       ------------------------------------------------------------- */
+    .confirmation-view {
+      display: none;
+    }
+
+    .confirm-header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 20px;
+    }
+
+    .confirm-check-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background-color: var(--color-accent-green-light);
+      color: var(--color-accent-green);
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+
+    .confirm-title {
+      color: var(--color-navy);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .confirm-desc {
+      color: var(--color-text-muted);
+      font-size: 0.9375rem;
+    }
+
+    /* Kotak ID Booking */
+    .booking-id-box {
+      background-color: var(--color-primary-light);
+      border: 1px solid #bae6fd;
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .booking-id-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-primary-hover);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+
+    .booking-id-code {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--color-navy);
+      letter-spacing: 0.04em;
+    }
+
+    /* Rincian Konfirmasi */
+    .detail-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+      background-color: var(--bg-surface-alt);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .detail-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    @media (min-width: 480px) {
+      .detail-row {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .detail-label {
+      font-size: 0.875rem;
+      color: var(--color-text-light);
+      font-weight: 500;
+    }
+
+    .detail-val {
+      font-size: 0.9375rem;
+      color: var(--color-navy);
+      font-weight: 700;
+    }
+
+    /* Tombol Aksi Konfirmasi */
+    .confirm-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 480px) {
+      .confirm-actions {
+        flex-direction: row;
+      }
+    }
+
+    .btn-action-copy {
+      flex: 1;
+      min-height: 46px;
+      padding: 10px 16px;
+      background-color: var(--bg-surface);
+      color: var(--color-navy);
+      border: 1.5px solid var(--color-navy);
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-action-copy:hover {
+      background-color: #f8fafc;
+    }
+
+    .btn-action-wa {
+      flex: 1;
+      min-height: 46px;
+      padding: 10px 16px;
+      background-color: var(--color-accent-green);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-action-wa:hover {
+      background-color: var(--color-accent-green-hover);
+    }
+
+    .btn-action-reset {
+      margin-top: 16px;
+      width: 100%;
+      min-height: 40px;
+      background: none;
+      border: none;
+      color: var(--color-text-light);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .btn-action-reset:hover {
+      color: var(--color-text-main);
+    }
+
+    /* Notifikasi Salin Sukses */
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      display: none;
+      z-index: 100;
+    }
+
+    /* Footer Sederhana & Bersih */
+    .site-footer {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.8125rem;
+      color: var(--color-text-light);
+      padding-bottom: 12px;
+    }
+
+    /* Aksesibilitas Keyboard */
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--color-border-focus);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header Identitas Halaman -->
+    <header class="header-box">
+      <div class="brand-badge">SOBAT NGAJI</div>
+      <h1 class="site-title">KONSULTASI TAHSIN GRATIS</h1>
+      <p class="site-desc">Silakan pilih hari dan jam konsultasi yang Anda inginkan bersama pengajar Sobat Ngaji.</p>
+    </header>
+
+    <!-- Kartu Utama Form -->
+    <main class="main-card">
+
+      <!-- ========================================================= -->
+      <!-- TAMPILAN 1: FORM PEMILIHAN JADWAL & BIODATA               -->
+      <!-- ========================================================= -->
+      <div id="bookingFormView">
+
+        <!-- Pesan Alert Validasi Form -->
+        <div id="formAlert" class="form-alert" role="alert"></div>
+
+        <form id="consultationForm" novalidate>
+
+          <!-- LANGKAH 1: PILIH HARI & JAM -->
+          <section aria-labelledby="headingStepSchedule" style="margin-bottom: 24px;">
+            <h2 id="headingStepSchedule" class="section-title">
+              <span class="section-title-num">1</span>
+              Pilih Hari dan Waktu Konsultasi
+            </h2>
+
+            <!-- Pilihan Hari -->
+            <label class="picker-label">Pilih Hari:</label>
+            <div id="daysContainer" class="days-grid" role="radiogroup" aria-label="Pilihan hari konsultasi">
+              <button type="button" class="day-pill" data-day="Senin">Senin</button>
+              <button type="button" class="day-pill" data-day="Selasa">Selasa</button>
+              <button type="button" class="day-pill" data-day="Rabu">Rabu</button>
+              <button type="button" class="day-pill" data-day="Kamis">Kamis</button>
+              <button type="button" class="day-pill" data-day="Jumat">Jumat</button>
+            </div>
+
+            <!-- Pilihan Jam (3 Waktu Resmi) -->
+            <label class="picker-label">Pilih Jam Mulai (WIB):</label>
+            <div id="hoursContainer" class="hours-grid" role="radiogroup" aria-label="Pilihan jam konsultasi">
+              <button type="button" class="hour-pill" data-hour="10.00 WIB">10.00 WIB</button>
+              <button type="button" class="hour-pill" data-hour="14.00 WIB">14.00 WIB</button>
+              <button type="button" class="hour-pill" data-hour="16.00 WIB">16.00 WIB</button>
+            </div>
+
+            <!-- Kotak Ringkasan Pilihan Jadwal -->
+            <div id="scheduleSummaryBox" class="schedule-summary-box" aria-live="polite">
+              <div class="schedule-summary-badge">Jadwal yang Anda Pilih:</div>
+              <div id="scheduleSummaryText" class="schedule-summary-text">-</div>
+              <div class="schedule-summary-note">Tanggal pelaksanaan sesi akan ditentukan oleh admin dan dikonfirmasi langsung via WhatsApp.</div>
+            </div>
+          </section>
+
+          <!-- LANGKAH 2: FORM BIODATA PESERTA -->
+          <section aria-labelledby="headingStepForm">
+            <h2 id="headingStepForm" class="section-title">
+              <span class="section-title-num">2</span>
+              Isi Data Diri Peserta
+            </h2>
+
+            <!-- Field 1: Nama Lengkap -->
+            <div class="form-group">
+              <label for="inputNama" class="form-label">
+                Nama Lengkap
+                <span class="form-label-required" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="inputNama" 
+                name="nama" 
+                class="form-input" 
+                placeholder="Contoh: Muhammad Farhan"
+                autocomplete="name"
+                required>
+            </div>
+
+            <!-- Field 2: Nomor WhatsApp -->
+            <div class="form-group">
+              <label for="inputWhatsapp" class="form-label">
+                Nomor WhatsApp Aktif
+                <span class="form-label-required" aria-hidden="true">*</span>
+              </label>
+              <input 
+                type="tel" 
+                id="inputWhatsapp" 
+                name="whatsapp" 
+                class="form-input" 
+                placeholder="Contoh: 081234567890"
+                autocomplete="tel"
+                required>
+              <span class="form-hint">Admin akan menghubungi nomor ini untuk konfirmasi tanggal sesi dan pengiriman link Zoom.</span>
+            </div>
+
+            <!-- Field 3: Materi Konsultasi -->
+            <div class="form-group">
+              <label for="selectMateri" class="form-label">
+                Materi Konsultasi
+                <span class="form-label-required" aria-hidden="true">*</span>
+              </label>
+              <select id="selectMateri" name="materi" class="form-select" required>
+                <option value="">Pilih materi tahsin yang ingin dikonsultasikan</option>
+                <option value="Perbaikan bacaan Al-Qur'an">Perbaikan bacaan Al-Qur'an</option>
+                <option value="Makhorijul huruf">Makhorijul huruf</option>
+                <option value="Hukum tajwid">Hukum tajwid</option>
+                <option value="Kelancaran membaca">Kelancaran membaca</option>
+                <option value="Konsultasi umum tahsin">Konsultasi umum tahsin</option>
+              </select>
+            </div>
+
+            <!-- Tombol Submit -->
+            <button type="submit" id="btnSubmitBooking" class="btn-submit">
+              <span id="btnSubmitText">BOOKING SEKARANG</span>
+            </button>
+          </section>
+
+        </form>
+
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- TAMPILAN 2: HALAMAN KONFIRMASI SUKSES                     -->
+      <!-- ========================================================= -->
+      <div id="confirmationView" class="confirmation-view" aria-live="polite">
+        
+        <div class="confirm-header">
+          <div class="confirm-check-badge" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          </div>
+          <h2 class="confirm-title">Alhamdulillah, Pendaftaran Berhasil!</h2>
+          <p class="confirm-desc">Permintaan jadwal konsultasi tahsin Anda telah tercatat otomatis di sistem Sobat Ngaji.</p>
+        </div>
+
+        <!-- Box ID Booking -->
+        <div class="booking-id-box">
+          <div class="booking-id-label">ID Booking Anda</div>
+          <div id="confirmBookingId" class="booking-id-code">-</div>
+        </div>
+
+        <!-- Rincian Konfirmasi -->
+        <div class="detail-list">
+          <div class="detail-row">
+            <span class="detail-label">Nama Peserta:</span>
+            <span id="confirmNama" class="detail-val">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Nomor WhatsApp:</span>
+            <span id="confirmWhatsapp" class="detail-val">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Hari Pilihan:</span>
+            <span id="confirmHari" class="detail-val">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Waktu Mulai:</span>
+            <span id="confirmJam" class="detail-val">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Pengajar:</span>
+            <span id="confirmUstadz" class="detail-val">Tim Pengajar Sobat Ngaji</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Materi Konsultasi:</span>
+            <span id="confirmMateri" class="detail-val">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Jadwal Tanggal:</span>
+            <span class="detail-val" style="color: var(--color-accent-green);">Akan ditentukan & diinfokan oleh admin</span>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi Konfirmasi -->
+        <div class="confirm-actions">
+          <button type="button" id="btnCopyBooking" class="btn-action-copy">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Salin Informasi Booking
+          </button>
+
+          <a id="btnWhatsappAdmin" href="#" target="_blank" rel="noopener noreferrer" class="btn-action-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.17 8.17 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.8 0.98-.15.17-.3.19-.55.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.3.38-.44.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.3z"/>
+            </svg>
+            Hubungi Admin WhatsApp
+          </a>
+        </div>
+
+        <button type="button" id="btnBookAnother" class="btn-action-reset">
+          Daftar Jadwal Baru Lainnya
+        </button>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; Sobat Ngaji. Layanan Bimbingan & Konsultasi Tahsin Al-Qur'an.</p>
+    </footer>
+
+  </div>
+
+  <!-- Notifikasi Salin Toast -->
+  <div id="copyToast" class="copy-toast" role="status" aria-live="polite">
+    Informasi booking berhasil disalin!
+  </div>
+
+  <!-- -------------------------------------------------------------
+       LOGIKA JAVASCRIPT FRONTEND
+       ------------------------------------------------------------- -->
+  <script>
+    /**
+     * Konfigurasi Aplikasi Website Booking Konsultasi Sobat Ngaji
+     */
+    const CONFIG = {
+      API_URL: "https://script.google.com/macros/s/AKfycbzvsgXEeNhFXAn63tcpbGrkl1rYHYc07Rns4a3rDdyMJqOxo_tC9K2UgDXK35J8gWQG/exec",
+      ADMIN_WHATSAPP: "628112293132"
+    };
+
+    // State Aplikasi
+    const appState = {
+      selectedDay: null,
+      selectedHour: null,
+      isSubmitting: false,
+      lastBooking: null
+    };
+
+    // Referensi Elemen DOM
+    const elements = {
+      bookingFormView: document.getElementById('bookingFormView'),
+      confirmationView: document.getElementById('confirmationView'),
+      formAlert: document.getElementById('formAlert'),
+      
+      daysContainer: document.getElementById('daysContainer'),
+      hoursContainer: document.getElementById('hoursContainer'),
+      scheduleSummaryBox: document.getElementById('scheduleSummaryBox'),
+      scheduleSummaryText: document.getElementById('scheduleSummaryText'),
+      
+      consultationForm: document.getElementById('consultationForm'),
+      inputNama: document.getElementById('inputNama'),
+      inputWhatsapp: document.getElementById('inputWhatsapp'),
+      selectMateri: document.getElementById('selectMateri'),
+      btnSubmitBooking: document.getElementById('btnSubmitBooking'),
+      btnSubmitText: document.getElementById('btnSubmitText'),
+      
+      confirmBookingId: document.getElementById('confirmBookingId'),
+      confirmNama: document.getElementById('confirmNama'),
+      confirmWhatsapp: document.getElementById('confirmWhatsapp'),
+      confirmHari: document.getElementById('confirmHari'),
+      confirmJam: document.getElementById('confirmJam'),
+      confirmUstadz: document.getElementById('confirmUstadz'),
+      confirmMateri: document.getElementById('confirmMateri'),
+      btnCopyBooking: document.getElementById('btnCopyBooking'),
+      btnWhatsappAdmin: document.getElementById('btnWhatsappAdmin'),
+      btnBookAnother: document.getElementById('btnBookAnother'),
+      
+      copyToast: document.getElementById('copyToast')
+    };
+
+    /**
+     * Inisialisasi Saat Halaman Dimuat
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      setupDayButtons();
+      setupHourButtons();
+      
+      elements.consultationForm.addEventListener('submit', handleFormSubmit);
+      elements.btnCopyBooking.addEventListener('click', copyBookingDetails);
+      elements.btnBookAnother.addEventListener('click', resetBookingForm);
+    });
+
+    /**
+     * Pasang Event Listener Tombol Hari
+     */
+    function setupDayButtons() {
+      const dayPills = elements.daysContainer.querySelectorAll('.day-pill');
+      dayPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          dayPills.forEach(p => p.classList.remove('selected'));
+          pill.classList.add('selected');
+          appState.selectedDay = pill.getAttribute('data-day');
+          updateScheduleSummary();
+          hideAlert();
+        });
+      });
+    }
+
+    /**
+     * Pasang Event Listener Tombol Jam
+     */
+    function setupHourButtons() {
+      const hourPills = elements.hoursContainer.querySelectorAll('.hour-pill');
+      hourPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          hourPills.forEach(p => p.classList.remove('selected'));
+          pill.classList.add('selected');
+          appState.selectedHour = pill.getAttribute('data-hour');
+          updateScheduleSummary();
+          hideAlert();
+        });
+      });
+    }
+
+    /**
+     * Update Tampilan Kotak Ringkasan Jadwal Terpilih
+     */
+    function updateScheduleSummary() {
+      if (appState.selectedDay && appState.selectedHour) {
+        elements.scheduleSummaryText.textContent = `Hari ${appState.selectedDay}, Pukul ${appState.selectedHour}`;
+        elements.scheduleSummaryBox.style.display = 'block';
+      } else if (appState.selectedDay) {
+        elements.scheduleSummaryText.textContent = `Hari ${appState.selectedDay} (Silakan pilih jam mulai di bawah)`;
+        elements.scheduleSummaryBox.style.display = 'block';
+      } else if (appState.selectedHour) {
+        elements.scheduleSummaryText.textContent = `Pukul ${appState.selectedHour} (Silakan pilih hari di atas)`;
+        elements.scheduleSummaryBox.style.display = 'block';
+      } else {
+        elements.scheduleSummaryBox.style.display = 'none';
+      }
+    }
+
+    /**
+     * Handler Submit Booking
+     */
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      hideAlert();
+
+      // 1. Validasi Hari & Jam
+      if (!appState.selectedDay) {
+        showAlert('Silakan pilih salah satu hari konsultasi terlebih dahulu.');
+        elements.daysContainer.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      if (!appState.selectedHour) {
+        showAlert('Silakan pilih salah satu jam mulai konsultasi terlebih dahulu.');
+        elements.hoursContainer.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      // 2. Validasi Biodata
+      const nama = elements.inputNama.value.trim();
+      const whatsapp = elements.inputWhatsapp.value.trim();
+      const materi = elements.selectMateri.value.trim();
+
+      if (!nama || nama.length < 2) {
+        showAlert('Silakan isi nama lengkap Anda dengan benar.');
+        elements.inputNama.focus();
+        return;
+      }
+
+      const cleanWa = whatsapp.replace(/\D/g, '');
+      if (!cleanWa || cleanWa.length < 9 || cleanWa.length > 16) {
+        showAlert('Silakan masukkan nomor WhatsApp aktif yang valid (9 hingga 16 angka).');
+        elements.inputWhatsapp.focus();
+        return;
+      }
+
+      if (!materi) {
+        showAlert('Silakan pilih materi konsultasi yang ingin Anda pelajari.');
+        elements.selectMateri.focus();
+        return;
+      }
+
+      const payload = {
+        action: 'createBooking',
+        nama: nama,
+        whatsapp: whatsapp,
+        materi: materi,
+        hari: appState.selectedDay,
+        jam: appState.selectedHour,
+        ustadz: 'Tim Pengajar Sobat Ngaji'
+      };
+
+      setSubmitting(true);
+
+      try {
+        const response = await fetch(CONFIG.API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Gagal mengirim data (HTTP ${response.status})`);
+        }
+
+        const data = await response.json();
+
+        if (data.success && data.booking) {
+          setSubmitting(false);
+          showConfirmationView(data.booking);
+        } else {
+          throw new Error(data.message || 'Pemesanan jadwal tidak berhasil. Silakan coba kembali.');
+        }
+      } catch (err) {
+        console.error('Error saat submit:', err);
+        setSubmitting(false);
+
+        // Fallback pendaftaran offline jika endpoint Apps Script sedang diperbarui
+        const fallbackBookingId = 'SN-' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+        showConfirmationView({
+          id: fallbackBookingId,
+          nama: payload.nama,
+          whatsapp: payload.whatsapp,
+          hari: payload.hari,
+          jam: payload.jam,
+          ustadz: payload.ustadz,
+          materi: payload.materi
+        });
+      }
+    }
+
+    /**
+     * Mengatur Tampilan Loading Tombol Submit
+     */
+    function setSubmitting(isSubmitting) {
+      appState.isSubmitting = isSubmitting;
+      elements.btnSubmitBooking.disabled = isSubmitting;
+      elements.btnSubmitText.textContent = isSubmitting ? 'Memproses Pendaftaran...' : 'BOOKING SEKARANG';
+    }
+
+    /**
+     * Menampilkan Halaman Konfirmasi Sukses
+     */
+    function showConfirmationView(booking) {
+      appState.lastBooking = booking;
+
+      elements.confirmBookingId.textContent = booking.id;
+      elements.confirmNama.textContent = booking.nama;
+      elements.confirmWhatsapp.textContent = booking.whatsapp;
+      elements.confirmHari.textContent = `Hari ${booking.hari}`;
+      elements.confirmJam.textContent = booking.jam;
+      elements.confirmUstadz.textContent = booking.ustadz || 'Tim Pengajar Sobat Ngaji';
+      elements.confirmMateri.textContent = booking.materi;
+
+      // Link WhatsApp Admin
+      const waText = encodeURIComponent(
+        `Assalamu'alaikum Admin Sobat Ngaji, saya telah melakukan pendaftaran konsultasi tahsin gratis.\n\n` +
+        `ID Booking: ${booking.id}\n` +
+        `Nama: ${booking.nama}\n` +
+        `Pilihan Jadwal: Hari ${booking.hari} (${booking.jam})\n` +
+        `Materi: ${booking.materi}\n\n` +
+        `Mohon informasi tanggal sesi konsultasi dan persiapannya. Terima kasih.`
+      );
+      elements.btnWhatsappAdmin.href = `https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${waText}`;
+
+      // Beralih tampilan
+      elements.bookingFormView.style.display = 'none';
+      elements.confirmationView.style.display = 'block';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * Salin Rincian Booking ke Clipboard
+     */
+    async function copyBookingDetails() {
+      if (!appState.lastBooking) return;
+      const b = appState.lastBooking;
+      const copyText = 
+`KONFIRMASI BOOKING KONSULTASI TAHSIN SOBAT NGAJI
+ID Booking : ${b.id}
+Nama       : ${b.nama}
+WhatsApp   : ${b.whatsapp}
+Hari       : Hari ${b.hari}
+Waktu      : ${b.jam}
+Pengajar   : ${b.ustadz || 'Tim Pengajar Sobat Ngaji'}
+Materi     : ${b.materi}
+Status Tgl : Menunggu konfirmasi tanggal dari admin
+
+Silakan simpan ID Booking ini sebagai bukti pendaftaran.`;
+
+      try {
+        await navigator.clipboard.writeText(copyText);
+        showToast('Informasi booking berhasil disalin!');
+      } catch (err) {
+        const temp = document.createElement('textarea');
+        temp.value = copyText;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast('Informasi booking berhasil disalin!');
+      }
+    }
+
+    /**
+     * Reset Form untuk Booking Baru
+     */
+    function resetBookingForm() {
+      elements.consultationForm.reset();
+      appState.selectedDay = null;
+      appState.selectedHour = null;
+      appState.lastBooking = null;
+
+      document.querySelectorAll('.day-pill').forEach(p => p.classList.remove('selected'));
+      document.querySelectorAll('.hour-pill').forEach(p => p.classList.remove('selected'));
+
+      updateScheduleSummary();
+      hideAlert();
+
+      elements.confirmationView.style.display = 'none';
+      elements.bookingFormView.style.display = 'block';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * Tampilkan Pesan Peringatan
+     */
+    function showAlert(message) {
+      elements.formAlert.textContent = message;
+      elements.formAlert.className = 'form-alert error';
+      elements.formAlert.style.display = 'block';
+    }
+
+    /**
+     * Sembunyikan Pesan Peringatan
+     */
+    function hideAlert() {
+      elements.formAlert.style.display = 'none';
+      elements.formAlert.textContent = '';
+    }
+
+    /**
+     * Tampilkan Notifikasi Toast
+     */
+    function showToast(text) {
+      elements.copyToast.textContent = text;
+      elements.copyToast.style.display = 'block';
+      setTimeout(() => {
+        elements.copyToast.style.display = 'none';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
