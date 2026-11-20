@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sobat Ngaji - Konsultasi Tahsin Gratis</title>
-  <meta name="description" content="Pilih hari dan jam konsultasi tahsin Al-Qur'an gratis bersama pengajar Sobat Ngaji.">
+  <meta name="description"
+    content="Pilih hari dan jam konsultasi tahsin Al-Qur'an gratis bersama pengajar Sobat Ngaji.">
 
   <style>
     /* -------------------------------------------------------------
@@ -15,26 +17,31 @@
       --bg-page: #f0f7fc;
       --bg-surface: #ffffff;
       --bg-surface-alt: #f8fafc;
-      
-      --color-primary: #0369a1;       /* Biru langit pekat berkontras tinggi */
+
+      --color-primary: #0369a1;
+      /* Biru langit pekat berkontras tinggi */
       --color-primary-hover: #075985;
       --color-primary-light: #e0f2fe;
-      
-      --color-navy: #0f2744;          /* Navy pekat untuk judul & identitas */
+
+      --color-navy: #0f2744;
+      /* Navy pekat untuk judul & identitas */
       --color-navy-muted: #1e3a5f;
-      
-      --color-accent-green: #15803d;  /* Aksen hijau alami berkontras tinggi */
+
+      --color-accent-green: #15803d;
+      /* Aksen hijau alami berkontras tinggi */
       --color-accent-green-hover: #166534;
       --color-accent-green-light: #dcfce7;
       --color-accent-green-text: #166534;
-      
-      --color-text-main: #0f172a;     /* Teks utama (kontras 17.8:1 pada putih) */
-      --color-text-muted: #334155;    /* Teks pendukung */
+
+      --color-text-main: #0f172a;
+      /* Teks utama (kontras 17.8:1 pada putih) */
+      --color-text-muted: #334155;
+      /* Teks pendukung */
       --color-text-light: #64748b;
-      
+
       --color-border: #cbd5e1;
       --color-border-focus: #0369a1;
-      
+
       --color-error-bg: #fef2f2;
       --color-error-text: #991b1b;
       --color-error-border: #fca5a5;
@@ -51,7 +58,9 @@
     }
 
     /* Reset dasar */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -579,6 +588,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
@@ -632,7 +642,8 @@
             <div id="scheduleSummaryBox" class="schedule-summary-box" aria-live="polite">
               <div class="schedule-summary-badge">Jadwal yang Anda Pilih:</div>
               <div id="scheduleSummaryText" class="schedule-summary-text">-</div>
-              <div class="schedule-summary-note">Tanggal pelaksanaan sesi akan ditentukan oleh admin dan dikonfirmasi langsung via WhatsApp.</div>
+              <div class="schedule-summary-note">Tanggal pelaksanaan sesi akan ditentukan oleh admin dan dikonfirmasi
+                langsung via WhatsApp.</div>
             </div>
           </section>
 
@@ -649,14 +660,8 @@
                 Nama Lengkap
                 <span class="form-label-required" aria-hidden="true">*</span>
               </label>
-              <input 
-                type="text" 
-                id="inputNama" 
-                name="nama" 
-                class="form-input" 
-                placeholder="Contoh: Muhammad Farhan"
-                autocomplete="name"
-                required>
+              <input type="text" id="inputNama" name="nama" class="form-input" placeholder="Contoh: Muhammad Farhan"
+                autocomplete="name" required>
             </div>
 
             <!-- Field 2: Nomor WhatsApp -->
@@ -665,15 +670,10 @@
                 Nomor WhatsApp Aktif
                 <span class="form-label-required" aria-hidden="true">*</span>
               </label>
-              <input 
-                type="tel" 
-                id="inputWhatsapp" 
-                name="whatsapp" 
-                class="form-input" 
-                placeholder="Contoh: 081234567890"
-                autocomplete="tel"
-                required>
-              <span class="form-hint">Admin akan menghubungi nomor ini untuk konfirmasi tanggal sesi dan pengiriman link Zoom.</span>
+              <input type="tel" id="inputWhatsapp" name="whatsapp" class="form-input" placeholder="Contoh: 081234567890"
+                autocomplete="tel" required>
+              <span class="form-hint">Admin akan menghubungi nomor ini untuk konfirmasi tanggal sesi dan pengiriman link
+                Zoom.</span>
             </div>
 
             <!-- Field 3: Materi Konsultasi -->
@@ -706,15 +706,17 @@
       <!-- TAMPILAN 2: HALAMAN KONFIRMASI SUKSES                     -->
       <!-- ========================================================= -->
       <div id="confirmationView" class="confirmation-view" aria-live="polite">
-        
+
         <div class="confirm-header">
           <div class="confirm-check-badge" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 6L9 17l-5-5"/>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5" />
             </svg>
           </div>
           <h2 class="confirm-title">Alhamdulillah, Pendaftaran Berhasil!</h2>
-          <p class="confirm-desc">Permintaan jadwal konsultasi tahsin Anda telah tercatat otomatis di sistem Sobat Ngaji.</p>
+          <p class="confirm-desc">Permintaan jadwal konsultasi tahsin Anda telah tercatat otomatis di sistem Sobat
+            Ngaji.</p>
         </div>
 
         <!-- Box ID Booking -->
@@ -751,14 +753,16 @@
           </div>
           <div class="detail-row">
             <span class="detail-label">Jadwal Tanggal:</span>
-            <span class="detail-val" style="color: var(--color-accent-green);">Akan ditentukan & diinfokan oleh admin</span>
+            <span class="detail-val" style="color: var(--color-accent-green);">Akan ditentukan & diinfokan oleh
+              admin</span>
           </div>
         </div>
 
         <!-- Tombol Aksi Konfirmasi -->
         <div class="confirm-actions">
           <button type="button" id="btnCopyBooking" class="btn-action-copy">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
@@ -767,7 +771,8 @@
 
           <a id="btnWhatsappAdmin" href="#" target="_blank" rel="noopener noreferrer" class="btn-action-wa">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.17 8.17 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.8 0.98-.15.17-.3.19-.55.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.3.38-.44.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.3z"/>
+              <path
+                d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.41a8.17 8.17 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.65.81-.8 0.98-.15.17-.3.19-.55.06-.25-.13-1.07-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.3.38-.44.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.3z" />
             </svg>
             Hubungi Admin WhatsApp
           </a>
@@ -801,7 +806,7 @@
      * Konfigurasi Aplikasi Website Booking Konsultasi Sobat Ngaji
      */
     const CONFIG = {
-      API_URL: "https://script.google.com/macros/s/AKfycbzvsgXEeNhFXAn63tcpbGrkl1rYHYc07Rns4a3rDdyMJqOxo_tC9K2UgDXK35J8gWQG/exec",
+      API_URL: "https://script.google.com/macros/s/AKfycbxWnEH9fhj72esDqrNNp8B7_yAAiLFhZpoLab6sdaar0mi2qVK5uEgetodkzrCKGOzevQ/exec",
       ADMIN_WHATSAPP: "628112293132"
     };
 
@@ -818,19 +823,19 @@
       bookingFormView: document.getElementById('bookingFormView'),
       confirmationView: document.getElementById('confirmationView'),
       formAlert: document.getElementById('formAlert'),
-      
+
       daysContainer: document.getElementById('daysContainer'),
       hoursContainer: document.getElementById('hoursContainer'),
       scheduleSummaryBox: document.getElementById('scheduleSummaryBox'),
       scheduleSummaryText: document.getElementById('scheduleSummaryText'),
-      
+
       consultationForm: document.getElementById('consultationForm'),
       inputNama: document.getElementById('inputNama'),
       inputWhatsapp: document.getElementById('inputWhatsapp'),
       selectMateri: document.getElementById('selectMateri'),
       btnSubmitBooking: document.getElementById('btnSubmitBooking'),
       btnSubmitText: document.getElementById('btnSubmitText'),
-      
+
       confirmBookingId: document.getElementById('confirmBookingId'),
       confirmNama: document.getElementById('confirmNama'),
       confirmWhatsapp: document.getElementById('confirmWhatsapp'),
@@ -841,7 +846,7 @@
       btnCopyBooking: document.getElementById('btnCopyBooking'),
       btnWhatsappAdmin: document.getElementById('btnWhatsappAdmin'),
       btnBookAnother: document.getElementById('btnBookAnother'),
-      
+
       copyToast: document.getElementById('copyToast')
     };
 
@@ -851,7 +856,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       setupDayButtons();
       setupHourButtons();
-      
+
       elements.consultationForm.addEventListener('submit', handleFormSubmit);
       elements.btnCopyBooking.addEventListener('click', copyBookingDetails);
       elements.btnBookAnother.addEventListener('click', resetBookingForm);
@@ -1038,8 +1043,8 @@
     async function copyBookingDetails() {
       if (!appState.lastBooking) return;
       const b = appState.lastBooking;
-      const copyText = 
-`KONFIRMASI BOOKING KONSULTASI TAHSIN SOBAT NGAJI
+      const copyText =
+        `KONFIRMASI BOOKING KONSULTASI TAHSIN SOBAT NGAJI
 ID Booking : ${b.id}
 Nama       : ${b.nama}
 WhatsApp   : ${b.whatsapp}
@@ -1115,4 +1120,5 @@ Silakan simpan ID Booking ini sebagai bukti pendaftaran.`;
     }
   </script>
 </body>
+
 </html>
